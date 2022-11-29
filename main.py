@@ -25,7 +25,7 @@ async def callback(request: Request, x_line_signature=Header(...)):
 
     try:
         # 署名検証
-        handler.handle(body, x_line_signature)
+        handler.handle(body.decode("utf-8"), x_line_signature)
     except InvalidSignatureError:
         # 署名検証に失敗した場合はエラーを返す
         raise HTTPException(status_code=400, detail="InvalidSignatureError")
