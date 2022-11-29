@@ -47,7 +47,7 @@ def handle_message(event):
     else:
         res = "わかりません"
 
-    # メッセージをそのまま返す
+    # 返信する (リプライトークンを使用してテキストで返信する)
     line_bot_api.reply_message(
         event.reply_token,
         TextSendMessage(text=res)
