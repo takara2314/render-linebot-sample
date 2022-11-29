@@ -1,0 +1,2 @@
+fastapi==0.88.0
+line-bot-sdk==2.3.0
