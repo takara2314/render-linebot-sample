@@ -15,7 +15,7 @@ handler = WebhookHandler(os.environ["LINE_CHANNEL_SECRET"])
 # / にGETリクエストが来たときに呼ばれる関数
 @app.get("/")
 def home():
-    return "こんにちは、世界！"
+    return {"message": "こんにちは、世界！"}
 
 # /callback にPOSTリクエストが来たときに呼ばれる関数
 @app.post("/callback")
@@ -30,7 +30,7 @@ async def callback(request: Request, x_line_signature=Header(...)):
         # 署名検証に失敗した場合はエラーを返す
         raise HTTPException(status_code=400, detail="InvalidSignatureError")
 
-    return "OK"
+    return {"message": "OK"}
 
 # テキストメッセージを受け取ったときに呼ばれる関数
 @handler.add(MessageEvent, message=TextMessage)
